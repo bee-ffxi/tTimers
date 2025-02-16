@@ -115,6 +115,11 @@ local function Initialize(tracker, buffer)
     buffer[856] = function(targetId)
         return 180;
     end
+
+    --Stun
+    buffer[252] = function(targetId)
+        return 5, 10
+    end
 end
 
 return Initialize;
