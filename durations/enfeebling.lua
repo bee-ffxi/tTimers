@@ -234,32 +234,32 @@ local function Initialize(tracker, buffer)
 
 	--Burn
 	buffer[235] = function(targetId)
-		return 90, 128;
+		return 120, 128;
 	end
 
 	--Frost
 	buffer[236] = function(targetId)
-		return 90, 129;
+		return 120, 129;
 	end
 
 	--Choke
 	buffer[237] = function(targetId)
-		return 90, 130;
+		return 120, 130;
 	end
 
 	--Rasp
 	buffer[238] = function(targetId)
-		return 90, 131;
+		return 120, 131;
 	end
 
 	--Shock
 	buffer[239] = function(targetId)
-		return 90, 132;
+		return 120, 132;
 	end
 
 	--Drown
 	buffer[240] = function(targetId)
-		return 90, 133;
+		return 120, 133;
 	end
 
 	--Sleep
@@ -277,12 +277,10 @@ local function Initialize(tracker, buffer)
 		return CalculateEnfeeblingDuration(30, targetId), 7;
 	end
 
-	--[[UNKNOWN
     --Bind
 	buffer[258] = function(targetId)
-		return CalculateEnfeeblingDuration(40, targetId);
+		return CalculateEnfeeblingDuration(60, targetId), 11;
 	end
-    ]]--
 
 	--Sleep II
 	buffer[259] = function(targetId)
