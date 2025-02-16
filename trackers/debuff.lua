@@ -453,7 +453,7 @@ ashita.events.register('packet_in', 'debuff_tracker_handleincomingpacket', funct
                 end
             elseif (gSettings.Debuff.TrackMode == 'Party Only') then
                 local party = AshitaCore:GetMemoryManager():GetParty();
-                for i = 1,5 do
+                for i = 1,17 do
                     if (party:GetMemberIsActive(i) == 1) and (party:GetMemberServerId(i) == packet.UserId) then
                         trackAction = true;
                     end
