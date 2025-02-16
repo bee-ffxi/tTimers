@@ -94,8 +94,16 @@ local refreshReceived = {
     [27464] = 15, --Inspirited Boots
     [28316] = 15, --Shabti Sabatons
     [28317] = 21, --Shab. Sabatons +1
-    [11575] = 30 --Grapevine Cape
+    [11575] = 30, --Grapevine Cape
 };
+
+local refreshDuration = {
+    [27009] = 30 --Dilation Ring [HorizonXI]
+};
+
+local hasteDuration = {
+    [27009] = 30 --Dilation Ring [HorizonXI]
+}
 
 local function ApplyEnhancingAdditions(duration, augments)
     local job = dataTracker:GetJobData();
@@ -286,12 +294,27 @@ local function CalculateRefreshDuration(targetId)
         duration = ApplyReceivedModifiers(duration, augments);
     end
     duration = ApplyEnhancingAdditions(duration, augments);
+    duration = duration + dataTracker:EquipSum(refreshDuration);
     if (targetId == dataTracker:GetPlayerId()) then
         duration = duration + dataTracker:EquipSum(refreshReceived);
     end
     duration = ApplyEnhancingMultipliers(duration, augments);
     duration = ApplyComposureModifiers(duration, targetId);
     duration = ApplyPerpetuanceModifiers(duration);
+    return duration;
+end
+
+local function CalculateHasteDuration(baseDuration, targetId)
+    local duration = baseDuration;
+    local augments = dataTracker:ParseAugments();
+    if (targetId == dataTracker:GetPlayerId()) then
+        duration = ApplyReceivedModifiers(duration, augments);
+    end
+    duration = ApplyEnhancingAdditions(duration, augments);
+    duration = ApplyEnhancingMultipliers(duration, augments);
+    duration = ApplyComposureModifiers(duration, targetId);
+    duration = ApplyPerpetuanceModifiers(duration);
+    duration = duration + dataTracker:EquipSum(hasteDuration);
     return duration;
 end
 
@@ -382,7 +405,7 @@ local function Initialize(tracker, buffer)
 
     --Haste
     buffer[57] = function(targetId)
-        return CalculateEnhancingDuration(180, targetId), 33;
+        return CalculateHasteDuration(180, targetId), 33;
     end
 
     --Barfire
@@ -862,7 +885,7 @@ local function Initialize(tracker, buffer)
 
     --Haste II
     buffer[511] = function(targetId)
-        return CalculateEnhancingDuration(180, targetId), 33;
+        return CalculateHasteDuration(180, targetId), 33;
     end
 
     --Foil
