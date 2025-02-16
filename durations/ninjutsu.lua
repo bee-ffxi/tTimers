@@ -49,47 +49,35 @@ local function Initialize(tracker, buffer)
 		return 120;
 	end
 
-    --[[UNKNOWN
 	--Jubaku: Ichi
 	buffer[341] = function(targetId)
-		return 0;
+		return 180, 4;
 	end
-    ]]--
-
-    --[[UNKNOWN
+    
 	--Hojo: Ichi
 	buffer[344] = function(targetId)
-		return 0;
+		return 180, 13;
 	end
-    ]]--
 
-    --[[UNKNOWN
 	--Hojo: Ni
 	buffer[345] = function(targetId)
-		return 0;
+		return 300, 13;
 	end
-    ]]--
 
-    --[[UNKNOWN
 	--Kurayami: Ichi
 	buffer[347] = function(targetId)
-		return 0;
+		return 180, 5;
 	end
-    ]]--
 
-    --[[UNKNOWN
 	--Kurayami: Ni
 	buffer[348] = function(targetId)
-		return 0;
+		return 300, 5;
 	end
-    ]]--
 
-    --[[UNKNOWN
 	--Dokumori: Ichi
 	buffer[350] = function(targetId)
-		return 60;
+		return 180, 3;
 	end
-    ]]--
 
     --Tonko: Ichi
     buffer[353] = function(targetId)
